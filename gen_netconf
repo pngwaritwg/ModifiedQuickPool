@@ -1,0 +1,36 @@
+#!/bin/bash
+if test $# = 2
+then
+        rider_count=$1
+        driver_count=$2
+        sp_ip=10.192.39.33
+        rider_ip=10.192.39.35
+        driver_ip=10.192.39.37
+else
+        echo "Error"
+        echo "Usage: run_netconf <num rider> <num driver>"
+        exit
+fi
+# echo [\"$sp_ip\", \"$rider_ip\", \"$driver_ip\"]
+rm -f tmp_file
+echo -n [\"$sp_ip\",  >> ./tmp_file
+r=$rider_count
+while test $r -ne 0
+do
+        echo -n \"$rider_ip\",  >> ./tmp_file
+        r=`expr $r - 1`
+done
+
+d=$driver_count
+d=`expr $d - 1`
+while test $d -ne 0
+do
+        echo -n \"$driver_ip\",  >> ./tmp_file
+        d=`expr $d - 1`
+done
+
+echo \"$driver_ip\"] >> ./tmp_file
+mv tmp_file ../net_config.json
+echo "Created net_config.json" $rider_count $driver_count
+
+

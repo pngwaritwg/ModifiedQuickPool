@@ -1,0 +1,4 @@
+build/
+tags
+.vscode/
+net_config.json
