@@ -287,6 +287,4 @@ int maxBPM(std::vector<std::vector<bool>> bpGraph) {
     }
     return result;
 }
-    
-}; // namespace quickpool
-
+}
